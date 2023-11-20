@@ -1,0 +1,100 @@
+
+\section{Meaning and use}
+\label{meaning-and-use}
+
+A distributional approach to semantics, which underpins virtually all computational
+models of language today, is frequently introduced with an appeal to Wittgenstein's
+remark that ``the meaning of a word is its use in the language''
+\parencites*[25\textsuperscript{c}]{Wittgenstein2009}.
+A detailed analysis of this remark and its place in Wittgenstein's philosophy is,
+naturally, beyond the scope of this paper.
+However, it will suffice to contrast it with the `Augustinian conception of language';
+specifically, that ``the meaning of a word is the object it stands for''
+\parencites[2]{Baker2005}.
+Traces of this picture persist in the \emph{Tractatus} \parencites*{Wittgenstein2001},
+which Wittgenstein seeks to dispel in the \emph{Investigations}
+\parencites*{Wittgenstein2009} by `grammatical clarifications' of concepts such as
+`meaning'.
+Briefly, the later Wittgenstein holds that one should think of words as tools, not
+names of entities, and that to understand the meaning of a word is to know how to use
+it, not to know the entities to which it refers \parencites[14-15]{Baker2005}.
+A proponent of distributional semantics might, therefore, take Wittgenstein's remark to
+deny a \emph{referential} theory of meaning,\footnote{In relation to formal semantics
+  \parencref{compositionality}, I note Wittgenstein's qualification ``for a \emph{large}
+  class of cases of the employment of the word `meaning' -- though not for \emph{all}''
+  \parencites*[25\textsuperscript{c}]{Wittgenstein2009}, which is also discussed by
+  \textcites[129-158]{Baker2005}.
+} i.e., one in which `meaning' is explained with
+reference to the world and the mind of the language user
+\parencites[2]{Sahlgren2008}.\footnote{This paper is based on Sahlgren's doctoral thesis
+  \parencites*{Sahlgren2006}.
+}
+Indeed, this remark prefaces the best-known expression of the \emph{distributional
+  hypothesis}, the theoretical principle on which the field is founded: J.~R.~Firth's
+dictum that ``you shall know a word by the company it keeps''
+\parencites*[11]{Firth1957}.
+
+A more direct influence of Wittgenstein's on the development of natural language
+processing is less often stated.
+One of the pupils to whom he dictated the lectures that would become \emph{The Blue
+  Book} \parencites*{Wittgenstein2007} was Margaret Masterman.
+As \textcites{Liu2021} explains, Masterman and her colleagues in the Cambridge Language
+Research Unit (CLRU) pioneered machine translation and developed the first computer
+thesaurus \parencites[653]{Gavin2018}.
+Though these efforts prefigured the better-known origins of distributional semantics in
+information retrieval \parencites[143-144]{Turney2010}[655-657]{Gavin2018}, if not in
+cognitive science \parencites[14-15]{Lenci2023}, they were hindered by the
+computational resources of the day \parencites[438]{Liu2021}.
+Furthermore, Masterman and others insisted on the importance of semantics over syntax
+\parencites[430]{Liu2021}, which starkly opposed the dominant Chomskyan school of the
+1960s \parencites[281-282]{Wilks2000}[5]{Lenci2008}.
+As she put it, ``formal logic as we at present have it is not and cannot be directly
+relevant to the contextually-based study of semantic pattern'' \parencites[IV
+  p\period~12]{Masterman1965}.
+In Chomsky's view, however, the problem of induction necessitates an innate faculty for
+language \parencites[e.g.][574-578]{Moyal-Sharrock2017}; hence, an explanation of
+linguistic phenomena must be sought in terms of cognitive principles, not
+distributional statistics \parencites[p. 5; cf. pp. 16--17]{Lenci2008}.
+Moreover, the idea that a formal basis could be established for ordinary language,
+rather than the mere analysis of its patterns, is exemplified by Richard Montague's
+assertion that there is ``no important theoretical difference between natural languages
+and the artificial languages of logicians'' \parencites*[222]{Montague1974}.
+
+The subsequent triumph of distributional methods, facilitated by the vertiginous growth
+in processing power and data since the 1970s, is difficult to dispute
+\parencites{Leiserson2020}[361-362]{Lenci2023}.
+But \emph{why} are distributional methods effective?
+Or, as Juan-Luis Gastaldi \parencite*{Gastaldi2021} puts it, \citetitle{Gastaldi2021}.
+This question is the subject of the present review.
+As \textcites[3,14-18]{Lenci2008} explains, the distributional hypothesis has
+historically been subject to a `weak' interpretation, on which distributional
+properties are merely correlated with latent semantic content; and a `strong'
+interpretation, on which its models are explanatory theories of cognitive
+representations and processes \parencites[see][]{Gunther2019}.
+This distinction has perhaps been obscured in the wake of predictive and contextual
+language models, whose representations are not necessarily reducible to interpretable
+distributional properties.
+While language models are sometimes understood as models of linguistic cognition
+\parencites{Houghton2023}, I present the view that their `unreasonable effectiveness'
+\parencites{Karpathy2015} can be explained by their disclosure of the internal
+\emph{structure} of language, without recourse to problematic cognitive analogies or
+the dissimilar phenomena of natural language acquisition and use.
+
+I begin by outlining the foundations of distributional semantics in structural
+linguistics and its key concepts \parencref{distributional-structure}.
+Then, in \cref{count-based-models}, I describe the origins of count-based models, and
+draw attention to the necessity of the segmentation of linguistic units as a
+precondition for distributional analysis.
+In \cref{compositionality}, I discuss compositionality and the relation between formal
+and distributional semantics, which contextualizes the advent of predictive language
+models and the continuities that obtain with their predecessors in
+\cref{predictive-language-models}.
+I briefly consider contextual language models and their interpretation with respect to
+a structuralist view of the distributional hypothesis in
+\cref{contextual-language-models}.
+Finally, in \cref{cognition-and-evaluation}, I touch on its `strong' interpretation,
+evaluation methodologies, and cognitive metaphors in natural language processing.
+The arguments I present are predominantly based on
+\textcites{Gastaldi2021}{Gastaldi2021a}{Westera2019}{Hacker2019}; the historical and
+bibliographical details owe much to \textcites{Sahlgren2008}{Lenci2008}{Lenci2023},
+among others.

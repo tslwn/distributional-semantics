@@ -1,0 +1,144 @@
+
+\section{Compositionality}
+\label{compositionality}
+
+The principle of \emph{compositionality} in semantics is that ``the meaning of an
+expression is a function of the meaning of its parts and of the way they are
+syntactically combined'' \parencites[153]{Partee2004}.
+Informally, it is obvious that natural language is compositional: we can understand an
+expression that we have not encountered before in terms of its words and grammatical
+structure.
+In evolutionary linguistics, compositionality is a necessary condition for language
+acquisition and a principal object of study \parencites[e.g.][]{Kirby2017}.
+Moreover, it is a fundamental feature of a formal or model-theoretic approach to
+semantics \parencites{Montague1974}[153-181]{Partee2004}.
+Historically, however, compositionality has posed difficulties for distributional
+semantics.
+Intuition and generative grammar suggest that infinite well-formed expressions are
+possible in natural languages, but it is not possible to learn infinite (or even very
+many) representations.
+Hence, if we are to model the meanings of complex expressions, we must find a way to
+compose learned representations of smaller linguistic units.
+We perhaps also expect that the composition of representations satisfies our
+expectations due to the inferential aspects of language, such as entailment, which
+formal semantics successfully models
+\parencites[20-21]{Lenci2008}[620-622]{Boleda2016}.
+Formal and distributional semantics are thus commonly framed as complementary
+approaches that it would be desirable to unify
+\parencites[e.g.][]{Erk2013}{Baroni2014}{Boleda2020}.
+However, \textcites{Westera2019} argue that this complementarity is overstated, which I
+discuss after a brief overview of vector-space composition.
+
+The simplest composition operation is vector addition.
+Intuitively, addition mixes the semantic content of its operands
+\parencites[292-293]{Lenci2023}.
+This may suffice for certain purposes, like information retrieval
+\parencites[229-231]{Landauer1997}, and addition remains ``surprisingly good, often
+outperforming more sophisticated methods'' \parencites[10]{Boleda2020}.
+But ``language is not merely a bag of words'' \parencites[156]{Harris1954}: commutative
+operations ignore word order, and plain vector operations ignore syntactic structure,
+both of which are obviously significant to certain aspects of meaning.
+The best-known study of vector-space composition operations is due to
+\textcites{Mitchell2008}, who compared the predictions of element-wise addition and
+multiplication, and weighted combinations thereof, to human judgments of similarity for
+pairs of intransitive verbs and their subjects.
+This evaluation methodology derives from \textcite{Kintsch2001}'s demonstration of a
+contextualization procedure for predicates (cf.~\cref{contextual-language-models}).
+In this study and its subsequent extension, the multiplication of the two vectors was
+most strongly correlated with human judgments
+\parencites[242-243]{Mitchell2008}[1414-1417]{Mitchell2010}, but it generalizes poorly
+to longer expressions \parencites[17]{Grefenstette2013}.
+Nonetheless, addition regained popularity for the representations learned by predictive
+language models \parencref{predictive-language-models}.
+Most notably, \textcites{Mikolov2013} demonstrate that the additive composition of
+skip-gram word embeddings produces plausible results for the parallelogram model of
+analogy \parencites[cf.~\cref{cognition-and-evaluation}]{Rumelhart1973}.
+\textcites{Mikolov2013a} went on to justify this result: if a word vector is interpreted
+as a representation of the probability distribution of the contexts in which it appears,
+then the sum of two vectors is related to the product of their context distributions,
+i.e., their combined probability, by the logarithmic function in the model's output
+layer.
+
+Approaches to composition that go beyond a `bag of words' by respecting word order and
+syntactic structure, are typically based on tensors (the generalization of vectors and
+matrices to orders other than $1$ and $2$).
+Related to the multiplicative approach of \textcites{Mitchell2008}{Mitchell2010} is
+that of \textcites{Baroni2010}, in which words are represented by tensors whose orders
+correspond to the words' grammatical types -- specifically, nouns by vectors and
+adjectives by matrices.
+It is likewise restricted to expressions of a fixed grammatical structure
+(adjective-noun pairs).
+More generally, in the context of cognitive science, \textcites{Smolensky1990} proposed
+the non-commutative tensor or Kronecker product as a composition operation
+\parencites[see][]{Smolensky2006}.
+The main problems with this approach for distributional representations of words are
+its computational expense, due to the exponential growth in dimensionality
+\parencites[19-20]{Grefenstette2013}, and the fact that sequences of different lengths
+obtain tensor representations of different orders \parencites[1]{Clark2008}.
+An alternative method that avoids these problems is to learn a generic composition
+operation alongside the representations on which it operates and to recursively apply
+it to parse trees, which may thus have arbitrary length and structure
+\parencites{Socher2012}{Socher2013}.\footnote{Notably, a linearized simplification of
+  this recursive neural network architecture is equivalent to the category-theoretic
+  approach described below \parencites{Lewis2019a}.
+}
+An overview of these developments is provided by
+\textcites[15-27]{Grefenstette2013}[18-24]{Kartsaklis2015}.
+
+Besides the dimensionality issues of the tensor product, non-commutativity alone does
+not account for syntactic structure.
+Hence, \textcites[3-4]{Clark2007} developed \citeauthor{Smolensky1990}'s proposal to
+unite distributional meaning representations with a \emph{symbolic} representation,
+such as a parse tree.
+This concept was generalized by the categorical compositional distributional framework,
+abbreviated as DisCoCat \parencites{Clark2008}{Coecke2010}.
+Briefly, this framework unifies grammatical type reductions with the composition of
+distributional representations, by exploiting the common compact closed structure of
+the categories of finite-dimensional vector spaces, i.e., distributional meaning
+representations, and Lambek's pregroup grammars
+\parencites*{Lambek1999}.\footnote{Pregroup grammars are a simplification of Lambek's
+  original calculus \parencites*{Lambek1958}, which was initially regarded as a
+  limitation of the framework.
+  However, the authors later clarified that it is not strictly dependent on pregroup
+  grammars, and reformulated it accordingly \parencites{Coecke2013a}.
+}
+A more thorough account is left to
+\textcites[29-44]{Grefenstette2013}[27-38]{Kartsaklis2015}.
+However, the fundamental issue with these models is that either (a) the grammar must be
+given \emph{a priori}, words must be annotated with grammatical types, and expressions
+must be well-formed; or (b) a probabilistic grammar must be learned jointly with the
+representations \parencites{Toumi2021}.
+In either case, the procedure is computationally expensive in comparison to traditional
+predictive language models \parencites[e.g.][5]{Meichanetzidis2023}.
+In addition, a model with a fixed grammar cannot be trivially extended to multiple
+languages and dialects, or phenomena like semantic change
+\parencites[cf.][]{Bradley2018}.
+Accordingly, this framework awaits a large-scale or general-purpose implementation.
+Recent contributions to the field have leaned towards its suitability for
+\emph{quantum} natural language processing, owing to the homomorphism between its
+string diagrams and quantum circuits \parencites[e.g.][]{deFelice2021a}.
+
+Prior to the widespread availability of pre-trained word embeddings, several authors
+found evidence to support a category-theoretic or tensor-based approach to composition
+\parencites[e.g.][]{Baroni2010}{Dinu2010}{Grefenstette2011}.
+However, these have been largely superseded by predictive language models
+\parencites{Milajevs2014}, whose fundamental strength is that they can learn
+\emph{both} syntactic and semantic relations from mostly unstructured text
+(cf.~\cref{count-based-models}), and thereby challenge the traditional distinction
+between syntax and semantics \parencites[186-191]{Gastaldi2021}.
+Leaving aside empirical considerations, efforts to unify formal and distributional
+semantics are largely driven by the supposed \emph{desideratum} of integrating the
+inferential and descriptive aspects of language that they respectively model.
+\textcites{Westera2019} argue that this is misguided, on the basis of the distinction
+between `expression' and `speaker meaning'.
+In essence, formal semantics models extra-linguistic objects, i.e., the concepts of our
+experience that words signify, whereas distributional semantics models
+\emph{linguistic} objects, the words that signify those concepts.
+The relations that obtain between these respective objects are naturally related, but
+they are not the same (see \cref{cognition-and-evaluation}).
+Accepting this distinction, the application of formal semantic operations to
+distributional representations, as in the category-theoretic approach, does not produce
+a general semantics.
+Nevertheless, distributional semantics in isolation does produce a \emph{complete}
+semantics, insofar as it achieves what is possible under Harris's conception of
+linguistics \parencref{distributional-structure}.

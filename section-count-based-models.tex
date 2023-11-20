@@ -1,0 +1,78 @@
+
+\section{Count-based models}
+\label{count-based-models}
+
+Vector representations of words and concepts have a long history in machine learning
+and cognitive science \parencites[143-144]{Turney2010}[15-16]{Lenci2023}.
+The idea that the occurrence frequencies of words can be used to convert text into
+vectors is generally thought to originate in the SMART information-retrieval system
+\parencites{Salton1971}[cf.][19-20]{Lenci2023}.
+Briefly, a system of this kind constructs vector-space representations of documents,
+whose dimensions are the terms of a vocabulary and whose values are the terms'
+frequencies.
+This allows a quantitative measure of the similarity of a document to a query,
+considered as a pseudo-document \parencites[108-110]{Jurafsky2023}.
+In relation to the distributional hypothesis, a \emph{vector-space model} (VSM) of this
+kind takes documents to be the `similar contexts' in which words with `similar
+meanings' co-occur.
+The insight that these vector representations may be interpreted as a term-document
+matrix, i.e., that its columns may be interpreted as \emph{word vectors}, is due to
+\textcites[394-395]{Deerwester1990}.
+Alternatively, the `context' of a target word may be defined by a fixed-size window
+\parencites{Lund1996}, or in terms of its syntactic relations
+\parencites{Lin1998}{Pado2007}.
+Both dimensions of the resultant matrix are the terms of a vocabulary, albeit in
+different roles.
+More detailed accounts of types of context and their influences on the resulting models
+are given by \textcites[152-154,158]{Lenci2018}[39-48]{Lenci2023}.
+
+Historically, such a model was sometimes distinguished from vector-space models by the
+name \emph{distributional semantic model}, hereafter DSM
+\parencites[166]{Gastaldi2021}.
+Similarly, the dense vectors that result from dimensionality reduction, i.e., the
+transformation of co-occurrence frequencies into a lower-dimensional latent space, as
+well as the activations of neural networks, are typically distinguished from the sparse
+columns of VSMs by the name \emph{word embeddings}
+\parencites[65]{Lenci2023}[107,119]{Jurafsky2023}.
+Today, the term DSM is generally used to refer to any model that represents the
+meanings of linguistic units in terms of their distributional relations.
+VSMs and DSMs have been variously described as matrix factorization
+\parencites[1533]{Pennington2014}, `matrix models'
+\parencites[167]{Gastaldi2021}[97-125]{Lenci2023}, and \emph{count-based} models
+\parencites{Baroni2014a}; I will use the latter term to distinguish between models that
+are explicitly based on co-occurrence statistics and the predictive and contextual
+language models discussed in
+\cref{predictive-language-models,contextual-language-models}.
+Influential reviews of DSMs are given by \textcites{Lenci2008}{Turney2010}, which
+\textcites{Erk2012} and \textcites{Clark2015} situate with respect to formal semantics
+(see \cref{compositionality}).
+More recently, \textcites{Lenci2023} provide a textbook-length account of
+distributional semantics.
+
+\citeauthor{Sahlgren2008} identifies term-document and term-term matrices with
+Saussurean syntagmatic and paradigmatic relations \parencites*[7-12]{Sahlgren2008}.
+Gastaldi argues that this association implies a continuum between the two, i.e., that
+the larger a model's context window, the `more syntagmatic' its representations
+\parencites*[179]{Gastaldi2021}.
+However, there is a more fundamental problem with \citeauthor{Sahlgren2008}'s
+interpretation: it is contradictory to analyse the meanings of words, or any other
+linguistic units, in terms of their syntagmatic and paradigmatic relations, because
+these relations are the means by which language is divided into the units of analysis
+\parencites[196-199]{Gastaldi2021}[582]{Gastaldi2021a}.\footnote{Notably,
+  \citeauthor{Gastaldi2021a} propose a framework in which \emph{paradigms} are the
+  elementary types, as opposed to grammatical types \parencref{compositionality}.
+  An exposition of this work is, unfortunately, outside the purview of this paper.
+}
+Indeed, a prerequisite of virtually all the models discussed in this paper is that text
+is \emph{already segmented} into the tokens that form the models' vocabularies.
+Some insight into the resolution of this causal dilemma may be gleaned by returning to
+structural linguistics \parencref{distributional-structure}.
+Saussure asserts that, prior to the emergence of linguistic distinctions, `thought' and
+`sound' are a ``shapeless and undifferentiated whole''
+\parencites[18,78]{Matthews2001}.
+The solution that he proposes is through the ``intervention of another similarly
+structured albeit heterogeneous system'' \parencites[197]{Gastaldi2021}, e.g., the
+concepts of our experience that we signify through language.
+A thread between the arguments of \citeauthor{Gastaldi2021} and \textcites{Westera2019}
+is that this intervening system \emph{lies beyond} the scope of distributional
+semantics, which I revisit in \cref{cognition-and-evaluation}.

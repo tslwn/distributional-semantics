@@ -1,0 +1,77 @@
+\ProvidesPackage{distributional-semantics}
+
+% Page layout
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  margin={1in,1in},
+}
+\usepackage{setspace}
+\onehalfspacing
+
+% Typography
+% https://ctan.math.washington.edu/tex-archive/fonts/etbb/doc/ETbb-doc.pdf
+\usepackage[p]{ETbb}
+\usepackage[scaled=.95,type1]{cabin}
+\usepackage[varqu,varl]{zi4}
+\usepackage[T1]{fontenc}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage{microtype}
+\frenchspacing
+
+% Bibliography
+\usepackage[
+  style=authoryear-icomp,
+  maxcitenames=2,
+  doi=false,
+  isbn=false,
+  backend=bibtex,
+]{biblatex}
+
+% \addbibresource{~/library.bib}
+\addbibresource{distributional-semantics.bib}
+
+% Map @misc to @online
+\DeclareSourcemap{
+  \maps[datatype=bibtex, overwrite=true]{
+    \map{
+      \step[typesource=misc, typetarget=online]
+    }
+  }
+}
+
+\AtEveryBibitem{
+  \clearlist{language}
+  \clearfield{month}
+  \clearfield{note}
+  \clearfield{eprint}
+  % Omit "Visited on <date>"
+  \iffieldundef{urlyear}
+  {}
+  {\clearfield{urlyear}}
+}
+
+% References
+\usepackage{bookmark}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\newcommand{\parencref}[1]{(\cref{#1})}
+
+% Authors
+\usepackage{authblk}
+
+% Word count
+\newcommand{\wordcount}{\input{|"texcount -brief -merge -sum=1 -total distributional-semantics.tex"}}
+
+% Citation count
+\usepackage{totcount}
+\newtotcounter{citationcounter}
+\AtEveryBibitem{\stepcounter{citationcounter}}
+\newcommand{\citationcount}{\total{citationcounter}}
+
+% Headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Shortcuts
+\newcommand{\period}{.}

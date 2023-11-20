@@ -1,0 +1,100 @@
+\section{Predictive language models}
+\label{predictive-language-models}
+
+An early observation of connectionist research was that the hidden-layer activations of
+a neural network come to represent domain features as a by-product of its learning
+procedure \parencites{Rumelhart1986}.
+The potential of these activations to serve as \emph{distributed representations} of
+linguistic units was recognized long before the popularity of word embeddings
+\parencites{Hinton1986}{Elman1991}.
+Generally, a combination of the per-unit input, output, and hidden-layer activations of
+a neural network is chosen to serve as the representations, e.g., one of the input or
+output layers \parencites[142]{Bengio2006}[642]{Mnih2007}[161-162]{Collobert2008}, or
+the two are constrained to be equal \parencites{Press2017}.
+A \emph{language model} assigns probabilities to sequences of words or, equivalently,
+predicts upcoming words from their prior context \parencites[32,134]{Jurafsky2023}.
+Various statistical language models have been proposed since the 1980s, which were
+originally based on $n$-gram counts \parencites{Rosenfeld2000}.
+The main precursors to contemporary methods, however, are the artificial neural
+networks of \textcites{Xu2000} and \textcites{Bengio2000}, which predict a target word
+from the words within a fixed-size context window, and the related models proposed in
+the 2000s \parencites[384-387]{Turian2010}.
+Despite Chomsky's famous remark that ``the notion `probability of a sentence' is an
+entirely useless one'' \parencites*[57]{Chomsky1969}, these predictive or `neural'
+language models soon dominated the landscape of distributional semantics
+\parencites{Baroni2014a}.
+
+Initially, however, these models were computationally expensive to train and
+commensurately limited in the size of their vocabularies and corpora
+\parencites[e.g.][203]{Xu2000}[1]{Alexandrescu2006}[641]{Mnih2007}[386]{Turian2010}.
+Their eventual dominance was heralded by the introduction of the
+continuous-bag-of-words and skip-gram algorithms of \textcites{Mikolov2013}, generally
+known as \wordvec{}, and the GloVe (``Global Vectors'') model
+\parencites{Pennington2014}.
+While it is memory-intensive to explicitly construct a co-occurrence matrix for large
+vocabularies and transform it into a lower-dimensional space
+\parencites[385]{Turian2010}, predictive models effectively construct the
+lower-dimensional space \emph{directly} and \emph{incrementally}.
+This efficiency facilitated the production and dissemination of word embeddings for
+much larger vocabularies and corpora
+\parencites[7-8]{Mikolov2013a}[1536]{Pennington2014}.
+
+Despite this radical advance in the applicability of DSMs, GloVe demonstrates a degree
+of continuity with its count-based predecessors \parencref{count-based-models}.
+Indeed, \textcites{Lenci2023} categorize GloVe as a matrix model
+\parencites*[122]{Lenci2023}.
+In the authors' view, ``global matrix factorization and local context window methods''
+are less distinct than they appear \parencites[1532]{Pennington2014}.
+Both implicitly build representations from global co-occurrence statistics, but matrix
+models less ably capture meaningful substructure in the embedding space, and predictive
+language models use global statistics less efficiently
+\parencites[1541]{Pennington2014}.
+In other words, ``architectures play only a secondary role in [the] relation between
+linguistic structure and global statistics'' \parencites[164]{Gastaldi2021}, and the
+contribution of predictive models is merely to optimize this encoding.
+A further correspondence is revealed by \textcites{Levy2014a}, who show that the
+skip-gram with negative sampling algorithm \parencites{Mikolov2013} implicitly
+factorizes a shifted pointwise mutual information matrix
+\parencites[e.g.][116-118]{Jurafsky2023}.
+The authors subsequently demonstrated that the apparent performance advantages of DSMs
+can be largely attributed to hyperparameter optimizations, as opposed to the inherent
+superiority of their architectures \parencites{Levy2015}[cf.][]{Sahlgren2016}.
+Relatedly, \textcites{Lenci2022} find that, contrary to the popularity of contextual
+models \parencref{contextual-language-models}, \emph{static} models generally
+outperform BERT \parencites{Devlin2019} on word-similarity and -association tasks,
+provided optimal hyperparameters.
+This conclusion is supported by \textcites{Arora2020}, who show that static and even
+\emph{random} embeddings can achieve similar performance to contextual embeddings
+\parencites[see also][5244-5246]{Gupta2019}[4760-4762]{Bommasani2020}.
+
+I noted in \cref{distributional-structure} that distributionalism is strictly agnostic
+with respect to the linguistic units of analysis -- it does not privilege the lexical
+level of language \parencites[190]{Gastaldi2021}.
+Accordingly, a productive line of language-model research has been to incorporate
+information from levels other than the lexical.
+At one end of the scale, character-level recurrent neural networks date back to at
+least \textcites{Elman1990}{Schmidhuber1996}.
+Moreover, a common solution to the problem of sparsity, i.e., the `long tail' of the
+word-frequency distribution, is to use sub-word units instead of words as the model's
+vocabulary.
+For instance, the \fasttext{} model extends the skip-gram algorithm
+\parencites{Mikolov2013} to learn representations for character $n$-grams (sub-words),
+which are combined to form representations for words
+\parencites[136-137]{Bojanowski2017}.
+Similarly, the popular BERT model uses a sub-word vocabulary \parencites{Wu2016} as its
+input embedding layer.
+At the other end of the scale, supra-lexical information is intimately related to
+compositionality \parencref{compositionality}.
+The representation of a sequence, such as a phrase or sentence, serves as a
+compositional representation of its constituent items.
+BERT likewise associates a special \texttt{CLS} (`classification') token with a
+sequence, separate from its constituent sub-word tokens \parencites[4174]{Devlin2019}.
+
+The essential characteristic of predictive language models with respect to a
+distributionalist conception of meaning is that their \emph{pre-trained}
+representations are able to serve as inputs or be adapted to a wide variety of tasks
+that involve language understanding
+\parencites[e.g.][]{Turian2010}{Mikolov2018}[23-24]{Bommasani2022}.
+This generality supports the idea that the isolated analysis of distributional
+relations is sufficient to explain `meaning' insofar as it is amenable to the science
+of linguistics \parencref{distributional-structure,compositionality}.

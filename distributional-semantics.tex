@@ -1,0 +1,37 @@
+\documentclass[11pt]{extarticle}
+\usepackage{distributional-semantics}
+
+\newcommand{\authortext}{Tim Lawson}
+\newcommand{\titletext}{The unreasonable effectiveness of distributional semantics}
+
+\newcommand{\fasttext}{\texttt{fastText}}
+\newcommand{\wordvec}{\texttt{word2vec}}
+
+\begin{document}
+
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\authortext}
+\fancyfoot[C]{\thepage}
+% \fancyfoot[R]{\wordcount{}words}
+% \fancyfoot[R]{\citationcount{} references}
+
+\title{\titletext}
+\author[]{\authortext}
+\affil[]{University of Bristol}
+\affil[]{\texttt{tim.lawson@bristol.ac.uk}}
+\date{}
+
+\maketitle
+
+\input{section-meaning-and-use.tex}
+\input{section-distributional-structure.tex}
+\input{section-count-based-models.tex}
+\input{section-compositionality.tex}
+\input{section-predictive-language-models.tex}
+\input{section-contextual-language-models.tex}
+\input{section-cognition-and-evaluation.tex}
+
+\printbibliography
+
+\end{document}

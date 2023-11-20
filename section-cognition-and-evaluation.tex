@@ -1,0 +1,106 @@
+\section{Cognition and evaluation}
+\label{cognition-and-evaluation}
+
+The `strong' version of the distributional hypothesis holds that the linguistic
+contexts in which a word appears have a causal relationship to its cognitive
+representation \parencites[16-18]{Lenci2008}[18-19]{Lenci2023}.
+This interpretation derives from psychology and cognitive science, where distributional
+methods have been widely applied
+\parencites[e.g.][16]{Lenci2008}[15-16]{Lenci2023}{Landauer2011}.
+Indeed, some of the most influential work in distributional semantics has been
+developed and evaluated in the context of cognitive science, and vector representations
+of meaning in psychology predate the development of vector-space models
+\parencref{meaning-and-use,count-based-models}.
+In response to the problem of induction, for instance, \textcites{Landauer1997}
+describe Latent Semantic Analysis as a theory of how we learn and use the meanings of
+words \parencite[cf.][3-34]{Landauer2011}.
+There is likewise a relation between the cognitive interpretation and a `use theory of
+meaning' \parencites[22-23]{Lenci2023}.
+This view is notably advocated by \textcites{Miller1991}, who describes the `contextual
+representation' of a word as ``knowledge of how that word is used''
+\parencites*[4]{Miller1991}.
+Hence, the `strong' version of their `contextual hypothesis' is that the semantic
+similarity of two words is determined by the similarity of their contextual, i.e.,
+cognitive, representations \parencites*[8]{Miller1991}.
+I take the view that this interpretation of the distributional hypothesis is
+unwarranted, and that it is due principally to (a) the practical necessity of
+evaluating distributional models against human judgments and (b) the widespread usage
+of cognitive metaphors in the literature \parencites[569-570]{Gastaldi2021a}.
+I discuss these points in turn, before concluding.
+
+The evaluation of language models may be divided into \emph{extrinsic} evaluation,
+which is based on the performance of the model on a specific task, and \emph{intrinsic}
+evaluation, which is notionally separate from any such task
+\parencites[38]{Wang2020a}{Torregrossa2021}[91-96]{Bommasani2022}.
+This distinction is particularly important for the evaluation of foundation models
+\parencref{contextual-language-models}, which are explicitly intended to be
+task-agnostic.
+Intrinsic evaluation is largely based on correspondence with human judgments, e.g.,
+ratings of semantic similarity or relatedness \parencites[17]{Lenci2023}, as evidenced
+by the survey of evaluation datasets in \textcites[1281]{Lenci2022}.
+For example, the word analogy task \parencref{compositionality} has been used to
+evaluate the quality of embedding spaces
+\parencites[4-5]{Mnih2013}{Levy2014}{Pennington2014}, but the generality of this
+approach has been questioned \parencites[1300]{Lenci2022}.
+There is likewise cause to criticize word similarity as an evaluation methodology
+altogether \parencites[]{Batchkarov2016}, not least due to the incompatibility of a
+naïve geometric definition with observable cognitive phenomena
+\parencites[3-11]{Lewis2022}.
+Performance on an intrinsic word-similarity task does not necessarily translate to
+extrinsic downstream tasks \parencites[7-8]{Batchkarov2016}, and inter-annotator
+agreement is generally poor for word-similarity in comparison to more specific tasks
+\parencites[8-9]{Batchkarov2016}.
+The correspondences between intrinsic and extrinsic evaluation are thus an important
+topic of research \parencites[92-94]{Bommasani2022}.
+While evaluation with respect to human judgments is practically necessary, it implies a
+cognitive interpretation of the model in question, which may be misleading.
+Accordingly, \textcites{DeDeyne2016} show that models explicitly based on
+word-association can outperform DSMs.
+
+The language we use to describe computers and artificial-intelligence systems makes
+widespread use of cognitive metaphors: computers and LSTM networks have `memory',
+Transformer blocks `pay attention to' textual features, and so on.
+This usage largely originates in the connectionist tradition and `neural' language
+models \parencref{predictive-language-models}.
+Interpreted literally, these metaphors lead us towards the misconception that
+increasingly sophisticated artificial-intelligence systems are increasingly akin to the
+mind \parencites[103]{Hacker2019}.
+The crux of \citeauthor{Hacker2019}'s argument against this view is that the faculties
+of the mind are \emph{normative}, whereas the behaviour of machines is \emph{causal}:
+following a rule is something other than executing a program, and determining whether
+the result of executing a program is correct is something other than verifying its
+`causal inevitability' \parencites*[107-108]{Hacker2019}.
+We do not speak of less sophisticated calculating devices as `thinking', except
+metaphorically, and we must take care to retain this metaphorical distinction when we
+speak of artificial-intelligence systems like language models.
+Indeed, it is difficult to see how particular DSMs could be interpreted as models of
+cognitive linguistic processes, since they commonly employ different architectures
+\parencites[570]{Gastaldi2021}.
+As \textcites{Houghton2023} have noted, state-of-the-art language models are not
+necessarily more like the brain than their predecessors: recurrent neural networks have
+generally been superseded by Transformers \parencites{Wang2019b}{Gillioz2020}, which
+eschew recurrent connections for the sake of computational efficiency
+\parencref{contextual-language-models}, but humans are generally considered to process
+language sequentially \parencites{Dominey2003}.
+What is common to these models is the theoretical principle of the distributional
+hypothesis, and that they learn distributed representations of the `meanings' of
+linguistic units (specifically, tensors in a high-dimensional vector space).
+Language-model training is furthermore increasingly dissimilar to natural language
+acquisition: rather than ingesting vast textual corpora, we use language to
+\emph{interact} with each other to achieve shared goals in our environment
+\parencites[361-363]{Lenci2023}.
+Hence, I suggest, the successes of DSMs in modelling cognitive phenomena vindicate this
+theoretical principle and representational form, but not more.
+
+The `structuralist hypothesis' of \textcites{Gastaldi2021}{Gastaldi2021a} holds that
+distributional semantics manifests purely formal relations between linguistic units,
+which are strictly separate from cognitive representations and processes, and that its
+successes are principally due to the reality of this internal structure.
+We might expect that this structure bears some resemblance to that of the concepts of
+our experience which it signifies -- perhaps even as a consequence of the cognitive
+processes that underlie its acquisition and use \parencites[see][]{Goldsmith2005}.
+As \textcites[5-8]{Landauer2011} explains, language is in part a map of the world, and
+we can derive useful knowledge from the map alone.
+But ``the map is not the territory'' \parencites[58]{Korzybski1995}, and the relations
+between the map and the territory are perhaps beyond the scope of distributional
+semantics.

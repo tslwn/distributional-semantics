@@ -1,0 +1,96 @@
+\section{Contextual language models}
+\label{contextual-language-models}
+
+In his \emph{Foundations of Arithmetic}, Frege promises ``never to ask for the meaning
+of a word in isolation, but only in the context of a proposition''
+\parencites[xxii]{Frege1960}.\footnote{In relation to \cref{compositionality}, the
+  principle of compositionality has also been attributed to Frege
+  \parencites{Janssen2001}{Pelletier2001}.
+  Both principles are also significant to the early and later Wittgenstein
+  \parencites[159-188]{Baker2005}.
+}
+Like the principle of compositionality \parencref{compositionality}, this tenet is
+intuitive: words are frequently polysemous \parencites[e.g.][173-174]{Kintsch2001}, or
+assume different connotations and emphasis within different expressions
+\parencites[e.g.][2-3]{Armendariz2020}.
+However, both count-based \parencref{count-based-models} and predictive models
+\parencref{predictive-language-models} originally produced a single, \emph{static}
+representation for each token of the model's vocabulary, which thus encoded all of its
+senses and connotations \parencites[e.g.][1]{Pelevina2016}.
+Historically, this problem was generally addressed by one of two approaches: (a) by
+producing a representation for each sense of a target word and discriminating between
+them in the given context; or (b) by contextualizing the representation of the target
+word based on those of its context, without explicitly modelling word senses.
+In this section, I provide an overview of these approaches before discussing
+\emph{contextual} language models.
+
+The task of word-sense discrimination is to determine the sense of an ambiguous word in
+a given context \parencites[97]{Schutze1998}.
+Based on \citeauthor{Miller1991}'s idea that word senses are determined by contextual
+similarity (cf.~\cref{cognition-and-evaluation}), \citeauthor{Schutze1998} proposed an
+influential unsupervised method of word-sense discrimination
+\parencites*[99]{Schutze1998}, which followed his work to model syntagmatic and
+paradigmatic relations (\cite{Schutze1993};~cf.~\cref{distributional-structure}).
+This method clusters the contexts in which target words occur, which
+\textcites{Reisinger2010} subsequently proposed to integrate with the construction of
+word vectors to produce a `prototype' vector for each cluster.
+\textcites{Kintsch2001} proposed an analogous procedure to contextualize the meaning
+of a predicate according to its particular arguments, which \textcites{Erk2008}
+generalized by a `structured vector-space' model that represents the selectional
+preferences of words with respect to arbitrary syntactic relations.
+A similarly syntactically-informed approach is given by
+\textcites{Thater2010}{Thater2011}.
+Multi-prototype models have likewise been proposed in the predictive setting
+\parencites[e.g.][]{Huang2012}{Tian2014}{Pelevina2016}.
+As evidenced in \cref{compositionality}, these methods correspond closely to the
+treatment of composition in distributional semantics
+\parencites[e.g.][]{Mitchell2008}{Mitchell2009}{Mitchell2010}{Dinu2010}.
+
+However, it was quickly recognized that the activations of neural networks that apply
+to sequences, e.g., recurrent neural networks, could serve as \emph{contextual}
+representations of the sequences' items
+\parencites{McCann2017}{Peters2017}{Peters2018}.
+For these models, therefore, composition and contextualization may be relieved of their
+status as separate problems that necessitate methods such as the above.
+Today, the predominant contextual language models are based on the attention mechanism
+\parencites[3-4]{Bahdanau2015} and, in particular, the Transformer architecture
+\parencites{Vaswani2017}.
+This mechanism generalizes the ability of recurrent neural networks to represent
+long-range dependencies between the items of sequences.
+However, unlike networks with recurrent connections, the computation necessitated by
+Transformers is \emph{parallelizable}, which has enabled them to be scaled to much
+larger corpora and many more parameters than their predecessors
+\parencites[e.g.][]{Kaplan2020}.
+
+\textcites[190]{Gastaldi2021} notes in his argument for a `structuralist hypothesis'
+that it does not treat this generation of DSMs explicitly.
+However, like \textcites[355]{Lenci2023}, he takes the view that they are no less
+founded on the theoretical principle of the distributional hypothesis than their
+predecessors, and we may draw an analogy between their mechanisms to support this view.
+In a Transformer block, each item in a sequence is represented by a \emph{query}
+vector, which is compared to the \emph{key} vectors of all the other items.
+The results of these comparisons are used to compute a weighted sum of the \emph{value}
+vectors of the items \parencites[3-4]{Vaswani2017}.
+The analogy with the predictive models of \cref{predictive-language-models} is clear:
+the query vector corresponds to the target word, the key vectors to its context words,
+and the sum of value vectors to a contextualization procedure.
+Like the approach of \textcites{Socher2012}, this procedure is learned, rather than
+defined \emph{a priori}, which provides its generality.
+Contextual language models likewise preserve the ability of predictive models to
+jointly learn syntactic and semantic information \parencites[e.g.][]{Hewitt2019}.
+
+In recent years, the majority of NLP research has focused on the development,
+application, and analysis of \emph{foundation} models
+\parencites[22-27]{Bommasani2022}.
+This paradigm shift can be identified with the introduction of the GPT
+\parencites{Radford2018}{Radford2019} and BERT \parencites{Devlin2019} models, which
+accord with the description above.
+While models of this kind have achieved widespread success on benchmark tasks
+\parencites[22-27]{Bommasani2022}, there is cause to criticize the suitability of
+typical benchmarks for characterizing their capabilities and limitations
+\parencites[5-6]{Srivastava2023}.
+Furthermore, the apparent emergent abilities of language models \parencites{Wei2022} on
+zero- and few-shot learning tasks, which are the most plausible source of their
+likeness to cognition, can be at least partly attributed to the increasing
+contamination of their training data \parencites{Li2023a}.
+Hence, I discuss this likeness in the following section.

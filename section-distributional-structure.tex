@@ -1,0 +1,71 @@
+\section{Distributional structure}
+\label{distributional-structure}
+
+The distributional hypothesis is typically stated in terms such as ``words that occur
+in similar contexts tend to have similar meanings'' \parencites[142-143]{Turney2010}
+or, more precisely, ``the degree of semantic similarity between two linguistic
+expressions $A$ and $B$ is a function of the similarity of the linguistic contexts in
+which $A$ and $B$ can appear'' \parencites[3]{Lenci2008}.
+Aside from Wittgenstein and Firth \parencites[10-14]{Lenci2023}, the most frequent
+shorthand for a distributional approach to semantics in the literature is Zellig
+Harris's \citetitle{Harris1954} \parencites*{Harris1954}.
+However, Harris was principally concerned with phonology and morphology
+\parencites[6]{Lenci2023}, despite the strong association between `distributionalism'
+and semantics today \parencites[186]{Gastaldi2021}[579]{Gastaldi2021a}.
+This is not to say that distributionalism is not concerned with meaning, but rather
+that it is limited to certain of its aspects, which I revisit ahead.
+Rather than a general semantics, Harris's aim was to establish a methodological basis
+for linguistics as a science \parencites[3,26]{Lenci2008}, which ``should (and, indeed,
+could) only deal with what is \emph{internal} to language''
+\parencites[3]{Sahlgren2008}.
+As \citeauthor{Lenci2023} explain, linguistics is unique in that ``it does not have
+recourse to a metalanguage that is external to its object of study''
+\parencites*[6]{Lenci2023}.
+Harris's ideas are properly situated with respect to his \emph{structuralist}
+intellectual heritage: he was a student of Leonard Bloomfield, the pre-eminent American
+structural linguist, who was deeply influenced by Ferdinand de~Saussure
+\parencites[20-30]{Matthews2001}[572]{Gastaldi2021a}.
+We may thus look to Saussure to understand what it means for words to occur in `similar
+contexts' and to have `similar meanings'.
+
+The term `structural linguistics' typically refers to an intellectual trend popularized
+by the posthumous publication of Saussure's \citetitle{Saussure2011}
+\parencites[3-4,6]{Matthews2001}.
+In this work, Saussure defines the linguistic sign as an indivisible unit that relates
+a concept, which is \emph{signified}, to a sound-image, which is its \emph{signifier}
+\parencites*[65-67]{Saussure2011}.
+Central to the theory is that the sign is `arbitrary': there is nothing external to the
+language-system that determines the sound-image that stands for a given concept
+\parencites*[67-70]{Saussure2011}.
+Hence, a sign is distinguished solely by its functional differences from the other
+signs in the language system, not by the extra-linguistic relations of the concept(s)
+that it signifies.
+Such a conception of meaning is thus \emph{differential} rather than referential
+\parencites[5]{Sahlgren2008}: like Wittgenstein, Saussure rejects the age-old view that
+``words are names for `things''' \parencites[18]{Matthews2001}[11]{Lenci2023}.
+Saussure further separates the differences between signs into \emph{syntagmatic} and
+associative or, following Hjelmslev \parencite*{Hjelmslev1938}, \emph{paradigmatic}
+relations.
+In distributional semantics, these kinds of relations between words are commonly known
+as first-order and second-order co-occurrence \parencites[126]{Jurafsky2023}, or ``how
+typical they are as neighbors and how well they are substitutable for each other''
+\parencites[1;~cf.~\cref{contextual-language-models}]{Schutze1993}.
+
+The geometric definition of semantic similarity induced by vector-space models, whose
+representations of `context' have been associated with syntagmatic and paradigmatic
+relations (\cite{Sahlgren2008}; cf. \cref{count-based-models}), is sometimes criticized
+due to its breadth \parencites[2]{Pado2003}.
+The literature thus commonly distinguishes between semantic similarity and a broader
+notion of word \emph{relatedness} \parencites{Budanitsky2006}[105-106]{Jurafsky2023}; a
+thorough analysis of similarity measures is provided by \textcites{Curran2004}.
+It is well-established that the neighbours of distributional representations reflect a
+mixture of semantic relations, e.g., synonymy and antonymy.
+However, as \textcites[4]{Sahlgren2008} notes, for this behaviour to problematize the
+distributional definition, one must suppose a prescriptivist view wherein these
+semantic relations are given \emph{a~priori} \parencite[188]{Gastaldi2021}.
+In any case, an appeal to Harris's distributionalism suggests that `meaning', insofar
+as it is amenable to linguistic analysis, derives from the formal relations between
+signs, rather than from the material relations between referents in the world, or
+contextually-determined cognitive representations.
+In the following sections, I examine the mechanics of distributional models to assess
+whether and how they actualize such a conception of meaning.

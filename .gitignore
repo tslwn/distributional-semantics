@@ -1,0 +1,21 @@
+# LaTeX
+**/*.aux
+**/*.bbl
+**/*-blx.bib
+**/*.bcf
+**/*.blg
+**/*.fdb_latexmk
+**/*.fls
+**/*.idx
+**/*.ilg
+**/*.ind
+**/*.loe
+**/*.log
+**/*.nav
+**/*.out
+**/*.run.xml
+**/*.snm
+**/*.synctex.gz
+**/*.synctex(busy)
+**/*.toc
+**/*.xdv
